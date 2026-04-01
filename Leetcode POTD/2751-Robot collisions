@@ -1,0 +1,58 @@
+//The problem is solved by using stack data structure.
+//The first observation is we need to sort the actual indexes according to given positions beacuse in result we have return the health in the order of positions.
+//After that we can simply check the robot movement according to given directions . first push those robot in the stack who are moving in the right. and those who are moving in the left check for the collision and apply three  condition which are given in the problem.
+//Those conditions are if two robots has the same health and they are coliding then both will be removed from the stack and if one is high and another low then the robot with low health will be  removed from the stack and high will decreases by -1
+// At the end we return the remaning robots health in order of their position.
+
+//The T.C for sorting is O(nlogn)
+//T.C: O(n).
+
+//code(java)
+
+class Solution {
+    public List<Integer> survivedRobotsHealths(int[] positions, int[] healths, String directions) {
+        int n = positions.length;
+        Integer[] indices = new Integer[n];
+        
+        for (int i = 0; i < n; i++) {
+            indices[i] = i;
+        }
+
+        Stack<Integer> stack = new Stack<>();
+
+        Arrays.sort(indices, (i, j) -> Integer.compare(positions[i], positions[j]));
+
+        List<Integer> result = new ArrayList<>();
+        
+        for (int currentIndex : indices) {
+            if (directions.charAt(currentIndex) == 'R') {
+                stack.push(currentIndex);
+            } else {
+                while (!stack.isEmpty() && healths[currentIndex] > 0) {
+                    int topIndex = stack.pop();
+
+                    if (healths[topIndex] > healths[currentIndex]) {
+                        healths[topIndex] -= 1;
+                        healths[currentIndex] = 0;
+                        stack.push(topIndex);
+                    } else if (healths[topIndex] < healths[currentIndex]) {
+                        healths[currentIndex] -= 1;
+                        healths[topIndex] = 0;
+                    } else {
+                        healths[currentIndex] = 0;
+                        healths[topIndex] = 0;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (healths[i] > 0) {
+                result.add(healths[i]);
+            }
+        }
+
+        return result;
+    }
+}
+
