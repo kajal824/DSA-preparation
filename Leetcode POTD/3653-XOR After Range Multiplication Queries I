@@ -1,3 +1,11 @@
+
+// this is very straight forward solution because constraint is low. 
+// SO we can go with the Brute force approach.
+//t.c = O(q.n)
+
+
+
+
 class Solution {
     public int xorAfterQueries(int[] nums, int[][] queries) {
 
