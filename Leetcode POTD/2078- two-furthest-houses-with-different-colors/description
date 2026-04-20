@@ -1,0 +1,28 @@
+// T.C = O(N^2)
+//S.C = O(K)
+
+class Solution {
+    public int maxDistance(int[] colors) {
+        int mx = Integer.MIN_VALUE;
+
+        for(int i =0; i<colors.length;i++){
+            for(int j=1;j<colors.length;j++){
+                if(colors[i]!=colors[j]){
+
+                    int diff = Math.abs(i-j);
+
+                     mx = Math.max(mx,diff);
+
+                     
+                    
+                }
+               
+            }
+        }
+
+        return mx;
+
+         
+        
+    }
+}
