@@ -1,0 +1,34 @@
+// T.C : O(n)
+//S.c : O(1)
+
+class Solution {
+    public int furthestDistanceFromOrigin(String moves) {
+        int n = moves.length();
+
+        int countR = 0;
+        int countL =0;
+        int countD = 0;
+
+        for(int i =0; i<n; i++){
+
+            if(moves.charAt(i)=='L'){
+                countL++;
+            }
+            else if(moves.charAt(i)=='R'){
+                countR++;
+            }
+            else if(moves.charAt(i) == '_' ){
+               
+                
+                    countD++;
+                
+            }
+
+
+            
+        }
+
+        return Math.abs(countR-countL)+countD;
+        
+    }
+}
