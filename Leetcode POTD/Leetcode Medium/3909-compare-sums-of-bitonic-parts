@@ -1,0 +1,34 @@
+class Solution {
+    public int compareBitonicSums(int[] nums) {
+        int n = nums.length;
+        int pek_ = n-1;
+
+        for(int i=0; i<n-1; i++){
+            if(nums[i]>nums[i+1]){
+                pek_ = i;
+                break;
+            }
+        }
+
+        long sum1 = 0; 
+        long sum2 =0;
+
+        for(int i=0;i<=pek_; i++){
+            sum1 += nums[i];
+        }
+        for(int j=pek_; j<n; j++){
+            sum2 += nums[j];
+        }
+        if(sum1>sum2){
+            return 0;
+        } else if(sum2>sum1){
+            return 1;
+        }
+       
+            return -1;
+        
+
+        
+        
+    }
+}
