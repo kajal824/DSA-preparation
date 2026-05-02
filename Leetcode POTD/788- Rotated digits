@@ -1,0 +1,37 @@
+//T.C = O(n logn)
+// s.c = O(1)
+
+
+class Solution {
+    public int rotatedDigits(int n) {
+        int count = 0;
+
+        for (int i = 1; i <= n; i++) {
+            int nums = i;
+            boolean isval = false;
+
+            while (nums > 0) {
+                int dig = nums % 10;
+
+                
+                if (dig == 3 || dig == 4 || dig == 7) {
+                    isval = false;
+                    break;
+                }
+
+                
+                if (dig == 2 || dig == 5 || dig == 6 || dig == 9) {
+                    isval = true;
+                }
+
+                nums /= 10;
+            }
+
+            if (isval) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
