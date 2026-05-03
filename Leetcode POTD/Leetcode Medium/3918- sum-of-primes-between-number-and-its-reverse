@@ -1,0 +1,46 @@
+
+
+
+       // T.C : O(n √n)
+      //SC: O(1)
+
+	​
+
+
+
+
+class Solution {
+    public int sumOfPrimesInRange(int n) {
+        int m = n;
+        int rev = 0;
+        while(m>0){
+            int dig  = m%10;
+             rev = (rev*10)+dig;
+                m /=10;
+        }
+        int st = Math.min(n,rev);
+        int ed = Math.max(n,rev);
+        int sum= 0;
+
+        for(int i= st ; i<=ed; i++){
+            if(i<2){
+                continue;
+            }
+            boolean isprime = true;
+            for(int j = 2; j*j<=i;j++){
+                if(i%j==0){
+                    isprime = false;
+                    break;
+                }
+            }
+            if(isprime){
+                sum +=i;
+            }
+            
+        }
+        return sum;
+
+        
+        
+    }
+}
