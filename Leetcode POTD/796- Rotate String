@@ -1,0 +1,17 @@
+// T.C : O(n)
+//S.C: O(n)
+
+
+
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        if(s.length()!=goal.length()){
+            return false;
+        }
+
+        String Ss = s + s;
+
+        return Ss.contains(goal);
+        
+    }
+}
