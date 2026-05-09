@@ -1,0 +1,51 @@
+//T.C : O(m x n)
+
+// S.C : O(m + n)
+
+
+class Solution {
+    public int[][] rotateGrid(int[][] grid, int k) {
+
+        int m = grid.length;
+        int n = grid[0].length;
+        int layers = Math.min(m, n) / 2;
+
+        for (int l = 0; l < layers; l++) {
+
+            List<Integer> ele = new ArrayList<>();
+
+            for (int j = l; j < n - 1 - l; j++) {
+                ele.add(grid[l][j]);
+            }
+            for (int i = l; i < m - 1 - l; i++) {
+                ele.add(grid[i][n - 1 - l]);
+            }
+            for (int j = n - 1 - l; j > l; j--) {
+                ele.add(grid[m - 1 - l][j]);
+            }
+            for (int i = m - 1 - l; i > l; i--) {
+                ele.add(grid[i][l]);
+            }
+
+            int size = ele.size();
+            int netk = k % size;
+
+            int idx = netk;
+
+            for (int j = l; j < n - 1 - l; j++) {
+                grid[l][j] = ele.get(idx++ % size);
+            }
+            for (int i = l; i < m - 1 - l; i++) {
+                grid[i][n - 1 - l] = ele.get(idx++ % size);
+            }
+            for (int j = n - 1 - l; j > l; j--) {
+                grid[m - 1 - l][j] = ele.get(idx++ % size);
+            }
+            for (int i = m - 1 - l; i > l; i--) {
+                grid[i][l] = ele.get(idx++ % size);
+            }
+        }
+        return grid;
+
+    }
+}
