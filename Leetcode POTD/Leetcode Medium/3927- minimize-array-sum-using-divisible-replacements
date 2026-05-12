@@ -1,0 +1,44 @@
+
+​
+
+
+
+class Solution {
+    public long minArraySum(int[] nums) {
+
+        Set<Integer> ex = new HashSet<>();
+
+        for(int num : nums){
+            ex.add(num);
+        }
+        long ttls = 0;
+
+
+        
+
+        for(int d : nums){
+            int sd = d;
+            
+
+            for(int v=1; v*v<=d;v++){
+                if(d%v == 0){
+                    if(ex.contains(v)){
+                        sd =Math.min(sd,v);
+                        break;
+                    }
+                    
+                    if(ex.contains(d/v)){
+                        sd = Math.min(sd, d/v);
+
+                        
+                    }
+                }
+            }
+            ttls += (long) sd; 
+        }
+        return ttls;
+        
+        
+        
+    }
+}
