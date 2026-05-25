@@ -1,0 +1,32 @@
+//T.C: O(n)
+//S.C:O(n)
+
+
+
+class Solution {
+    public int[] limitOccurrences(int[] nums, int k) {
+
+        if(nums.length <= k ){
+
+            return nums;
+        }
+        int j =0;
+
+        int[] freq = new int[nums.length];
+        
+
+        for(int i=0;i<nums.length; i++){
+
+            if(j<k|| nums[i] !=freq[j-k]){
+
+                freq[j++] = nums[i];
+            }
+        }
+        int[] res = new int[j];
+
+        System.arraycopy(freq, 0, res,0, j);
+
+        return res;
+        
+    }
+}
