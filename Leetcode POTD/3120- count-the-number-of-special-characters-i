@@ -1,0 +1,30 @@
+//T.C(n)
+
+//S.C:O(1)
+
+
+class Solution {
+    public int numberOfSpecialChars(String word) {
+
+        String s1 = word.toUpperCase();
+
+        String s2 = word.toLowerCase();
+        int count = 0;
+
+        for(char c = 'a' ; c<='z'; c++){
+
+            String lc = String.valueOf(c);
+            String uc = String.valueOf(Character.toUpperCase(c));
+
+            if(word.contains(lc) && word.contains(uc)){
+                count++;
+            }
+
+
+
+        }
+
+        return count;
+        
+    }
+}
