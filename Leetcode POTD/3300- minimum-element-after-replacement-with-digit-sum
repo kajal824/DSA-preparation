@@ -1,0 +1,29 @@
+
+
+//T.C : O(n x d)
+
+//S.C : O(1)
+
+
+
+class Solution {
+    public int minElement(int[] nums) {
+
+        int mn = Integer.MAX_VALUE;
+
+        for (int num : nums) {
+
+            int sum = 0;
+
+            while (num > 0) {
+                int r = num % 10;
+                sum += r;
+                num /= 10;
+            }
+
+            mn = Math.min(mn, sum);
+        }
+
+        return mn;
+    }
+}
