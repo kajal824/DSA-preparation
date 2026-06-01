@@ -1,0 +1,22 @@
+
+
+// T.C: O(logn)
+// S.C: O(1)
+
+
+
+
+class Solution {
+    public int digitFrequencyScore(int n) {
+        int sc = 0;
+
+        while(n>0){
+
+            sc += n%10;
+
+            n/=10;
+        }
+        return sc;
+        
+    }
+}
