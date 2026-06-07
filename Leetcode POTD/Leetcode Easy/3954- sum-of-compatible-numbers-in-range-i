@@ -1,0 +1,29 @@
+//T.C: O(N)
+
+//S.C:O(1)
+
+
+
+
+
+
+class Solution {
+    public int sumOfGoodIntegers(int n, int k) {
+
+        int sum= 0;
+
+        int st = Math.max(1, n-k);
+        int ed = n+k;
+        for(int x=st; x<=ed; x++){
+             if((n&x)==0){
+              sum += x;
+     }
+            
+        }
+
+        return sum;
+
+    
+        
+    }
+}
