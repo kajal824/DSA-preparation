@@ -1,0 +1,38 @@
+class Solution {
+    public List<String> generateValidStrings(int n, int k) {
+
+        List<String> ans = new ArrayList<>();
+
+       backtrack(0, n, k, new StringBuilder(), 0, ans);
+        return ans;
+        
+
+        
+        
+        
+    }
+    private void backtrack(int ind, int n, int k, StringBuilder currentString, int currCost, List<String> ans){
+        if(ind == n){
+            ans.add(currentString.toString());
+            return;
+        }
+
+        currentString.append('0');
+        backtrack(ind+1, n, k, currentString, currCost, ans);
+        if(currentString.length()>0){
+            currentString.deleteCharAt(currentString.length()-1);
+        }
+
+        
+
+        boolean canp = currentString.length()==0 || currentString.charAt(currentString.length()-1)=='0';
+
+        if(canp && (currCost+ind <=k)){
+            currentString.append('1');
+            backtrack(ind+1, n, k, currentString, currCost+ind, ans);
+             currentString.deleteCharAt(currentString.length()-1);
+            
+        }
+            
+    }
+}

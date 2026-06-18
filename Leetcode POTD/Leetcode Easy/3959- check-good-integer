@@ -1,0 +1,19 @@
+class Solution {
+    public boolean checkGoodInteger(int n) {
+
+        int dsum = 0;
+        int sq = 0;
+        String nm = Integer.toString(n);
+
+        for(int i=0; i<nm.length(); i++){
+            int dig = Character.getNumericValue(nm.charAt(i));
+
+            dsum += dig;
+            sq += dig*dig;
+        }
+
+        return (sq-dsum) >=50;
+        
+
+    }
+}
