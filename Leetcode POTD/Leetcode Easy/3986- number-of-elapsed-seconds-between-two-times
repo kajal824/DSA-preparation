@@ -1,0 +1,38 @@
+class Solution {
+    public int secondsBetweenTimes(String startTime, String endTime) {
+
+        String[] sp = startTime.split(":");
+
+        int h = Integer.parseInt(sp[0]);
+        int m = Integer.parseInt(sp[1]);
+        int s = Integer.parseInt(sp[2]);
+
+        String[] endParts = endTime.split(":");
+
+        int th = Integer.parseInt(endParts[0]);
+        int tm = Integer.parseInt(endParts[1]);
+        int ts = Integer.parseInt(endParts[2]);
+
+        int eps = 0;
+
+        while(h!=th || m!=tm || s!= ts){
+            eps++;
+            s++;
+
+            if(s==60){
+                s=0;
+                m++;
+                if(m==60){
+                    m=0; 
+                    h++;
+                    if(h==24){
+                        h=0;
+                    }
+                }
+            }
+        }
+
+        return eps;
+        
+    }
+}
