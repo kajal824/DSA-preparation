@@ -1,0 +1,36 @@
+class Solution {
+    
+    static void getAllSubsequences( String s, int index,StringBuilder opt,List<String>ans){
+        if(index >= s.length()){
+            
+            String subsequence = opt.toString();
+            ans.add(subsequence);
+            return;
+        }
+        
+        char ch = s.charAt(index);
+        
+        opt.append(ch);
+        
+        getAllSubsequences(s,index+1, opt, ans);
+        
+        opt.deleteCharAt(opt.length()-1);
+        
+        getAllSubsequences(s,index+1, opt, ans);
+        
+        
+        
+    }
+    public List<String> powerSet(String s) {
+        // Code here
+        List<String> ans = new ArrayList<>();
+        
+        StringBuilder opt = new StringBuilder();
+        int index = 0;
+        
+        getAllSubsequences(s, index, opt,ans);
+        
+        Collections.sort(ans);
+        return ans;
+    }
+}
