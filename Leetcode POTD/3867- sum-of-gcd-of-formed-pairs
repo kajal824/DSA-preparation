@@ -1,0 +1,42 @@
+class Solution {
+    public long gcdSum(int[] nums) {
+        int mx = 0;
+
+        int [] ans = new int[nums.length];
+
+        for(int i=0; i<nums.length; i++){
+            mx = Math.max(mx, nums[i]);
+            ans[i] = gcd(nums[i], mx);
+        }
+
+        Arrays.sort(ans);
+        long tt = 0;
+        int l = 0;
+        int r = nums.length-1;
+
+        while(l<r){
+
+            tt += gcd(ans[l],ans[r]);
+            l++;
+            r--;
+        }
+        return tt;
+
+       
+        
+
+        
+    }
+     private int gcd(int a, int b){
+
+           while(b!=0){
+
+            int tem = b;
+            b = a%b;
+            a = tem;
+
+           }
+           return a;
+           
+        }
+}
