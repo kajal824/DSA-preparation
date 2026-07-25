@@ -1,0 +1,45 @@
+class Solution {
+    public int maxProduct(int n) {
+
+        if(n==0){
+            return 0;
+        }
+
+        List<Integer> l1 = new ArrayList<>();
+
+        int prd = 1;
+        int mx = Integer.MIN_VALUE;
+
+
+        while(n!=0){
+
+            int dig = n%10;
+
+            l1.add(dig);
+
+
+            n/=10;
+
+
+
+        }
+
+        if (l1.size() < 2) {
+            return 0; 
+        }
+
+        
+        Collections.sort(l1);
+
+        
+        int size = l1.size();
+         prd = l1.get(size - 1) * l1.get(size - 2);
+
+        return prd;
+
+        
+
+        
+        
+    }
+}
