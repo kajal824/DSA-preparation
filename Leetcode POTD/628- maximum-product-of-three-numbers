@@ -1,0 +1,23 @@
+class Solution {
+    public int maximumProduct(int[] nums) {
+
+        int prd = 1;
+        int prd2 = 1;
+
+        Arrays.sort(nums);
+
+        int n = nums.length;
+
+        prd = nums[n-1]*nums[n-2]*nums[n-3];
+
+        prd2 = nums[0]*nums[1]*nums[n-1];
+
+        return Math.max(prd, prd2);
+        
+
+        
+    }
+}
+
+// t.c : O(n log n)
+// s.c : O(1)
