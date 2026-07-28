@@ -1,0 +1,42 @@
+class Solution {
+    public List<List<Integer>> aggregateTimeSeries(int[][] series1, int[][] series2) {
+
+        TreeSet<Integer> uni = new TreeSet<>();
+
+        for(int[] pt : series1){
+            uni.add(pt[0]);
+            
+        }
+        for(int[]pt : series2){
+            uni.add(pt[0]);
+        }
+        List<List<Integer>> res = new ArrayList<>();
+
+        for(int t:uni){
+            int vl1 = getCeilingValue(series1,t);
+            int vl2 = getCeilingValue(series2,t);
+
+                res.add(Arrays.asList(t,vl1+vl2));
+        }
+        return res;
+        
+        
+    }
+
+        private int getCeilingValue(int[][]series, int tar){
+            int l=0;
+            int h= series.length-1;
+            int vl=0;
+            while(l<=h){
+                int mid = l+(h-l)/2;
+
+                if(series[mid][0]>=tar){
+                    vl = series[mid][1];
+                    h = mid-1;
+                }else{
+                    l = mid+1;
+                }
+            }
+            return vl;
+        }
+}
