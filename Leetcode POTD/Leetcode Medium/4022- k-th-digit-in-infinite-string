@@ -1,0 +1,42 @@
+class Solution {
+    public int kthDigit(long k) {
+        if(k<=9){
+            return (int)k;
+        }
+        k -=9;
+        long d = 2;
+        long bs = 1;
+
+        while(true){
+            long bi = 9*bs;
+            long pb = 10L * d;
+
+            if(k<= bi*pb){
+                break;
+            }
+            k -= bi *pb;
+            bs *=10;
+            d++;
+        }
+        k--;
+        long pb = 10L*d;
+        long bsk = k/ pb;
+        long rk = k% pb;
+
+        long b = bs + bsk;
+
+        int subx = (int) (rk/d);
+        int dix = (int) (rk%d);
+        long acn ;
+
+        if(b%2==0){
+            acn = 10*b+subx;
+            
+        }else{
+            acn = 10*b+(9-subx);
+        }
+
+        return Character.getNumericValue(Long.toString(acn).charAt(dix));
+        
+    }
+}
